@@ -16,8 +16,13 @@ function validarFormulario(){
 
 
 function validarNome(nome){
+    document.getElementById("errNome").innerHTML = ("<span></span>");
     if(nome == ""){
-        console.log("nome vazio");
+        document.getElementById("errNome").innerHTML = ("<span style='color: red;'>Campo Obrigatório</span>");
+        
+    }
+    else if(!validarNomeSnome(nome)){
+        document.getElementById("errNome").innerHTML = ("<span style='color: red;'>Digite nome e sobrenome</span>");
     }
 }
 
@@ -32,3 +37,8 @@ function validarFone(fone){
         console.log("telefone vazio");
     }
 }
+
+function validarNomeSnome(texto) {
+    const regExp1 = /^[a-zA-Z\u00C0-\u017F´]+\s+[a-zA-Z\u00C0-\u017F´]{0,}$/;
+    return regExp1.test(texto);
+  }
